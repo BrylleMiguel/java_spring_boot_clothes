@@ -19,6 +19,10 @@ public class ClotheService {
         return clotheRepository.findAll();
     }
 
+    public List<String> getBrands() {
+        return clotheRepository.getBrands();
+    }
+
     public int insertItem() {
         return clotheRepository.insertItem();
     }

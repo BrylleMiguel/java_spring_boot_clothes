@@ -24,17 +24,20 @@
                 Collected Clothes
             </h1>
 
-            <form action="">
-                <input type="text" />
+            <form action="" th:object="${clothe}">
                 <input type="text" />
                 <input type="text" />
                 <input type="text" />
                 <input type="text" />
                 <button type="submit">add clothe</button>
+                <select name="" id="" th:field="*{brands}">
+                    <option th:value="${name}"></option>
+                </select>
             </form>
-            <!-- <ul th:each="clothe: clothes">
-                <li th:text="clothe"></li>
-            </ul> -->
+        </div>
+        <h1 th:text="${message}"></h1>
+        <div th:each="c: ${clothes}">
+            <p th:text="${c.name}"></p>
         </div>
     </body>
 </html>

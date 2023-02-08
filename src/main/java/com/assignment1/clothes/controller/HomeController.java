@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.assignment1.clothes.service.ClotheService;
 
 @Controller
-@RequestMapping("/")
-public class IndexController {
+@RequestMapping("/home")
+public class HomeController {
 
     private ClotheService clotheService;
 
-    IndexController(ClotheService clotheService) {
+    HomeController(ClotheService clotheService) {
         this.clotheService = clotheService;
     }
 
@@ -22,6 +22,8 @@ public class IndexController {
     @ModelAttribute
     public String getIndex(Model model) {
         model.addAttribute("clothes", clotheService.findAll());
-        return "/index";
+        model.addAttribute("brands", clotheService.getBrands());
+
+        return "home";
     }
 }
