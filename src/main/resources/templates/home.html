@@ -24,20 +24,34 @@
                 Collected Clothes
             </h1>
 
-            <form action="" th:object="${clothe}">
-                <input type="text" />
-                <input type="text" />
-                <input type="text" />
-                <input type="text" />
-                <button type="submit">add clothe</button>
-                <select name="" id="" th:field="*{brands}">
-                    <option th:value="${name}"></option>
-                </select>
-            </form>
-        </div>
-        <h1 th:text="${message}"></h1>
-        <div th:each="c: ${clothes}">
-            <p th:text="${c.name}"></p>
+            <div class="container-sm">
+                <form
+                    action=""
+                    th:object="${clothe}"
+                    class="d-flex justify-content-center"
+                >
+                    <div class="d-flex justify-content-center flex-column">
+                        <input
+                            type="text"
+                            placeholder="name"
+                            class="text-center"
+                        />
+                        <input type="text" placeholder="price" />
+                        <input type="text" placeholder="year" />
+                        <select th:field="*{brand}">
+                            <option
+                                th:each="b : ${brands}"
+                                th:value="${b}"
+                                th:text="${b.name}"
+                            />
+                        </select>
+                        <button type="submit">add clothe</button>
+                    </div>
+                </form>
+            </div>
+            <div th:each=" clothe: ${clothes}">
+                <code th:text="${clothe.name}"></code>
+            </div>
         </div>
     </body>
 </html>

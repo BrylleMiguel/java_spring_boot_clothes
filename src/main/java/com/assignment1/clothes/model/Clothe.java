@@ -1,15 +1,37 @@
 package com.assignment1.clothes.model;
 
-import java.util.Date;
+import java.time.Year;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
+@Table
 public class Clothe {
-    private int id;
+
+    @Id
+    private Double id;
+
+    @NotBlank
     private String name;
-    private Date yearOfCreation;
+
+    @Min(1)
+    @Max(499)
     final Double price;
+
+    @DateTimeFormat
+    private Year yearOfCreation;
+
+    @NotBlank
+    private String brand;
 
     public enum Brand {
         NIKE("Nike"),
@@ -19,14 +41,14 @@ public class Clothe {
         STONE_ISLANDS("Stone Islands"),
         BALENCIAGA("Balenciaga");
 
-        private String brandName;
+        private String name;
 
-        private Brand(String brandName) {
-            this.brandName = brandName;
+        private Brand(String name) {
+            this.name = name;
         }
 
-        public String getbrandName() {
-            return brandName;
+        public String getBrandName() {
+            return name;
         }
     }
 }
