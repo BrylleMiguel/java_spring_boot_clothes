@@ -28,6 +28,12 @@ public class HomeController {
         return Clothe.builder().build();
     }
 
+    @ModelAttribute
+    public void brands(Model model) {
+        EnumSet<Brand> brands = EnumSet.allOf(Brand.class);
+        model.addAttribute("brands", brands);
+    }
+
     @GetMapping
     public String getIndex() {
         return "home";
@@ -35,20 +41,11 @@ public class HomeController {
 
     @PostMapping
     public String insertClothe(@Valid Clothe clothe, BindingResult result) {
-        if (result.hasErrors())
+        if (result.hasErrors()) {
             return "home";
+        }
+
         clotheRepository.save(clothe);
-        return "home";
-    }
-
-    @ModelAttribute
-    public void brands(Model model) {
-        EnumSet<Brand> brands = EnumSet.allOf(Brand.class);
-        model.addAttribute("brands", brands);
-    }
-
-    @ModelAttribute
-    public void getAllClothes(Model model) {
-        model.addAttribute("clothes", clotheRepository.findAll());
+        return "redirect:/list";
     }
 }

@@ -1,14 +1,15 @@
 package com.assignment1.clothes.model;
 
-import java.time.Year;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
-import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
@@ -18,6 +19,7 @@ import lombok.Data;
 public class Clothe {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Double id;
 
     @NotBlank
@@ -25,10 +27,11 @@ public class Clothe {
 
     @Min(1)
     @Max(499)
-    final Double price;
+    @NotNull
+    private Double price;
 
-    @DateTimeFormat
-    private Year yearOfCreation;
+    @Min(2021)
+    private int yearOfCreation;
 
     @NotBlank
     private String brand;

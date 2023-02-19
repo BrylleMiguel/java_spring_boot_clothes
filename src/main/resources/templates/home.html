@@ -20,37 +20,80 @@
     </head>
     <body style="font-family: 'Lato', sans-serif">
         <div class="mt-5">
-            <h1 class="text-center" style="font-weight: 700">
-                Collected Clothes
-            </h1>
+            <h1 class="text-center" style="font-weight: 700">Add Clothe</h1>
 
-            <div class="container-sm">
+            <div class="container-lg">
                 <form
-                    action=""
+                    class="d-flex justify-content-center align-items-center flex-column"
+                    method="POST"
                     th:object="${clothe}"
-                    class="d-flex justify-content-center"
                 >
-                    <div class="d-flex justify-content-center flex-column">
-                        <input
-                            type="text"
-                            placeholder="name"
-                            class="text-center"
-                        />
-                        <input type="text" placeholder="price" />
-                        <input type="text" placeholder="year" />
-                        <select th:field="*{brand}">
-                            <option
-                                th:each="b : ${brands}"
-                                th:value="${b}"
-                                th:text="${b.name}"
+                    <div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <span
+                                th:if="${#fields.hasErrors('name')}"
+                                th:errors="*{name}"
+                            ></span>
+                            <input
+                                th:field="*{name}"
+                                type="text"
+                                class="form-control"
+                                id="name"
+                                name="name"
                             />
-                        </select>
-                        <button type="submit">add clothe</button>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price</label>
+                            <span
+                                th:if="${#fields.hasErrors('price')}"
+                                th:errors="*{price}"
+                            ></span>
+                            <input
+                                th:field="*{price}"
+                                type="number"
+                                step=".01"
+                                class="form-control"
+                                id="price"
+                                name="price"
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label"
+                                >Year created</label
+                            >
+                            <span
+                                th:if="${#fields.hasErrors('yearOfCreation')}"
+                                th:errors="*{yearOfCreation}"
+                            ></span>
+                            <input
+                                th:field="*{yearOfCreation}"
+                                type="number"
+                                class="form-control"
+                                id="yearOfCreation"
+                                name="yearOfCreation"
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label for="brand" class="form-label">Brand</label>
+                            <select
+                                th:field="*{brand}"
+                                class="form-select mb-3"
+                                id="brand"
+                                name="brand"
+                            >
+                                <option
+                                    th:each="b: ${brands}"
+                                    th:value="${b}"
+                                    th:text="${b.name}"
+                                ></option>
+                            </select>
+                            <button type="submit" class="btn btn-primary">
+                                add +
+                            </button>
+                        </div>
                     </div>
                 </form>
-            </div>
-            <div th:each=" clothe: ${clothes}">
-                <code th:text="${clothe.name}"></code>
             </div>
         </div>
     </body>

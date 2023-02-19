@@ -1,7 +1,5 @@
 package com.assignment1.clothes;
 
-import java.time.Year;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,14 +15,14 @@ public class ClothesApplication {
 		SpringApplication.run(ClothesApplication.class, args);
 	}
 
-	// @Bean
-	// CommandLineRunner dataRunner(ClotheRepository clotheRepository) {
-	// return args -> clotheRepository.save(Clothe
-	// .builder()
-	// .name("Polo Shirt")
-	// .price(13.99)
-	// .yearOfCreation(Year.of(2021))
-	// .brand("Nike")
-	// .build());
-	// }
+	@Bean
+	CommandLineRunner dataRunner(ClotheRepository clotheRepository) {
+		return args -> clotheRepository.save(Clothe
+				.builder()
+				.name("Polo Shirt")
+				.price(13.99)
+				.yearOfCreation(2019)
+				.brand("Nike")
+				.build());
+	}
 }
