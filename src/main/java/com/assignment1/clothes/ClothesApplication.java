@@ -13,6 +13,7 @@ public class ClothesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ClothesApplication.class, args);
+
 	}
 
 	@Bean
@@ -21,7 +22,7 @@ public class ClothesApplication {
 				.builder()
 				.name("Polo Shirt")
 				.price(13.99)
-				.yearOfCreation(2019)
+				.yearOfCreation(2022)
 				.brand("Nike")
 				.build());
 	}
