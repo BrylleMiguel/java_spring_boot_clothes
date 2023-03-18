@@ -1,4 +1,4 @@
-package com.assignment1.clothes.controller;
+package com.assignment.clothes.controller;
 
 import java.util.EnumSet;
 
@@ -11,15 +11,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.assignment1.clothes.model.Clothe;
-import com.assignment1.clothes.model.Clothe.Brand;
-import com.assignment1.clothes.repository.ClotheRepository;
+import com.assignment.clothes.model.Clothe;
+import com.assignment.clothes.model.Clothe.Brand;
+import com.assignment.clothes.repository.ClotheRepository;
 
 import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/home")
 public class HomeController {
+
     @Autowired
     private ClotheRepository clotheRepository;
 
@@ -46,6 +47,6 @@ public class HomeController {
         }
 
         clotheRepository.save(clothe);
-        return "redirect:/list";
+        return "redirect:/clothesList";
     }
 }

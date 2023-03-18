@@ -1,4 +1,4 @@
-package com.assignment1.clothes;
+package com.assignment.clothes;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
